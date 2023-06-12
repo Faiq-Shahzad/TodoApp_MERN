@@ -16,7 +16,7 @@ To run this project, follow the steps below:
 1. Clone this git repository:
 
 ```
-git clone https://github.com/your-username/your-project.git
+git clone https://github.com/Faiq-Shahzad/TodoApp_MERN.git
 ```
 2. Open the project folder from your local machine.
 3. Start the Docker Container using the following command:
