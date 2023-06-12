@@ -5,10 +5,10 @@ This repository contains a MERN (MongoDB, Express, React, Node.js) project that 
 To run this project, you need to have the following tools installed:
 
 - Docker
-- Docker Compose: Installation Guide
+- Docker Compose
 
-## Getting Started
-To get started with this project, follow the steps below:
+## Steps To Run Project
+To run this project, follow the steps below:
 
 Clone this repository to your local machine:
 
