@@ -6,15 +6,17 @@ const cors = require('cors');
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || 5000;
 
 app.use(express.json());
 app.use(cors());
 
+const mongoURL = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/TODO_App";
+
 
 //Connecting to MongoDB
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect(mongoURL)
   .then(() => console.log("connected to MONGO DB"))
   .catch((err) => console.log(err));
 

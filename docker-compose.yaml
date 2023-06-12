@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: react-app 
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - mern-network
+
+  server:
+    build: ./backend
+    container_name: node-server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=development
+      - MongoUrl=mongodb://mongo:27017/TODO_App
+    networks:
+      - mern-network
+    
+  mongodb:
+    image: mongo
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+    networks:
+    - mern-network
+    
+networks:
+  mern-network:
+    driver: bridge
+volumes:
+  data-volume:
+  node_modules:
+  web-root:
+    driver: local
