@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Creating TODO List Schema
 const todoSchema = new mongoose.Schema({
   task: {
     type: String,

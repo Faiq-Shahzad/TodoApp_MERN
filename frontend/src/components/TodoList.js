@@ -7,11 +7,14 @@ import { MdDeleteOutline } from "react-icons/md";
 const TodoList = ({ todo, handleUpdateTask, handleDeleteTask }) => {
   const [visible, setVisible] = useState();
 
+  // Sending updated item from Child to Parent
   const handeltaskUpdate = (e) => {
     handleUpdateTask(todo._id, !todo.completed);
   };
 
   return (
+
+    //TODO List
     <div className="todoList">
       <div className="taskDiv">
         <input
@@ -29,6 +32,8 @@ const TodoList = ({ todo, handleUpdateTask, handleDeleteTask }) => {
           />
         </div>
         {visible && (
+
+          // Sending item id from Child to Parent for Deletion
           <div>
             <MdDeleteOutline size={25} onClick={() => handleDeleteTask(todo._id)} />
           </div>

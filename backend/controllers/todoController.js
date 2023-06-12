@@ -3,7 +3,7 @@ const { Router } = require("express");
 
 const router = Router();
 
-//route to add a new task
+//route to ADD/POST a new task
 router.post("/addtask", async (req, res) => {
   try {
     const addTask = new todoSchema({
@@ -17,7 +17,7 @@ router.post("/addtask", async (req, res) => {
   }
 });
 
-//route to get all the tasks
+//route to GET all the tasks
 router.get("/", async (req, res) => {
   try {
     const list = await todoSchema.find();
@@ -29,6 +29,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+//route to PUT/UPDATE a selected tasks
 router.put("/task/:id", async (req, res) => {
   try {
     const updateTask = await todoSchema.findByIdAndUpdate(req.params.id, {
@@ -44,6 +46,7 @@ router.put("/task/:id", async (req, res) => {
   }
 });
 
+//route to DELETE a selected tasks
 router.delete("/task/:id", async (req, res) => {
   try {
     const deleteTask = await todoSchema.findByIdAndDelete(req.params.id);

@@ -13,29 +13,39 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [task, setTask] = useState();
 
+  // Add a new Task
   const handleAddTask = () => {
     addTask(task, setTask, setTodoList);
   };
 
+  // Update a task
   const handleUpdateTask = (taskID, completed) => {
     updateTask(taskID, completed, setTodoList);
   };
 
+  // Delete a task
   const handleDeleteTask = (taskID) => {
     deleteTask(taskID, setTodoList);
   };
 
   useEffect(() => {
+    // Get TodoList
     getTodoList(setTodoList);
   }, []);
 
   return (
     <div className="App">
+      {/* Background Image */}
       <div className="background"></div>
       <div className="content">
+        {/* Profile Image */}
         <img className="profileImg" src={require("./assets/avatar.jpg")} />
+
+        {/* Input Task Field */}
         <div className="inputDiv">
           <RxHamburgerMenu className="icon" size={30} />
+
+          {/* Form Used to Add a Task on Enter */}
           <form className="inputForm" onSubmit={handleAddTask}>
             <input
               className="inputField"
@@ -51,10 +61,11 @@ function App() {
             />
           </form>
         </div>
+
+        {/* Display List */}
         {todoList.length > 0 ? (
           <div className="list">
             {todoList.map((item) => (
-              // <TodoList key={item._id} task={item.task} />
               <TodoList
                 todo={item}
                 handleUpdateTask={handleUpdateTask}

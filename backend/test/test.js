@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+//------------------ TESTING POST FUNCTION -------------------------
 describe("POST request", () => {
   test("should make a successful POST request", async () => {
     // Mocking the response
