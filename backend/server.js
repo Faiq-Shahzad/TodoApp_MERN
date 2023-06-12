@@ -20,3 +20,5 @@ mongoose
 app.use(routes);
 
 app.listen(PORT, () => console.log("Listening on: ", PORT));
+
+module.exports = app;
