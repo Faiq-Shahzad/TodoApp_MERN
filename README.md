@@ -1,6 +1,6 @@
 # TODO LIST MERN Application
 
-![image](https://github.com/Faiq-Shahzad/TodoApp_MERN/blob/main/frontend/assets/coverImage.jpg?raw=true)
+![image](https://github.com/Faiq-Shahzad/TodoApp_MERN/blob/main/frontend/assets/coverImage.png?raw=true)
 This repository contains a MERN (MongoDB, Express, React, Node.js) project that has been configured for deployment using Docker. The project utilizes Docker containers to ensure easy and consistent deployment across different environments.
 
 ## Prerequisites
