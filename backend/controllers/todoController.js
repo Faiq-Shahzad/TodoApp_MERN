@@ -1,10 +1,7 @@
 const todoSchema = require("../models/todoModel");
-const { Router } = require("express");
 
-const router = Router();
-
-//route to ADD/POST a new task
-router.post("/addtask", async (req, res) => {
+// POST TASK CONTROLLER
+const postTask = async (req, res) => {
   try {
     const addTask = new todoSchema({
       task: req.body.task,
@@ -15,10 +12,10 @@ router.post("/addtask", async (req, res) => {
   } catch (err) {
     res.json(err);
   }
-});
+};
 
-//route to GET all the tasks
-router.get("/", async (req, res) => {
+// GET ALL TASK CONTROLLER
+const getTasks = async (req, res) => {
   try {
     const list = await todoSchema.find();
     console.log("Getting List from DB ->", list.length);
@@ -27,36 +24,35 @@ router.get("/", async (req, res) => {
     console.log(err);
     res.json(err);
   }
-});
+};
 
-
-//route to PUT/UPDATE a selected tasks
-router.put("/task/:id", async (req, res) => {
+// UPDATE TASK CONTROLLER
+const updateTask = async (req, res) => {
   try {
     const updateTask = await todoSchema.findByIdAndUpdate(req.params.id, {
       completed: true,
       completedTime: Date.now(),
     });
     console.log(updateTask);
-    res.status(200).json("Task Updated Successfully -> "+ {updateTask});
+    res.status(200).json("Task Updated Successfully -> " + { updateTask });
   } catch (err) {
     console.log(err);
 
     res.json(err);
   }
-});
+};
 
-//route to DELETE a selected tasks
-router.delete("/task/:id", async (req, res) => {
+// DELETE TASK CONTROLLER
+const deleteTask = async (req, res) => {
   try {
     const deleteTask = await todoSchema.findByIdAndDelete(req.params.id);
     console.log(deleteTask);
-    res.status(200).json("Task Deleted Successfully -> "+ {deleteTask});
+    res.status(200).json("Task Deleted Successfully -> " + { deleteTask });
   } catch (err) {
     console.log(err);
 
     res.json(err);
   }
-});
+};
 
-module.exports = router;
+module.exports = {postTask, getTasks, updateTask, deleteTask}
