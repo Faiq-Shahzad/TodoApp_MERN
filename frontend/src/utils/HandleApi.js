@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backendUrl = "http://localhost:5000";
+const backendUrl = process.env.REACT_APP_BACKENDURL || "http://localhost:5000";
 
 // HandleApi file is being used to connect to the server using axios to perform GET, POST, UPDATE, DELETE Functions in a seperate file to keep the code clean
 
