@@ -52,8 +52,10 @@ The project structure is as follows:
   - Dockerfile
   
 - /backend
-  - /controllers (Controllers and Routes)
+  - /config (configDB)
+  - /controllers (Controllers)
   - /models (Todo Schema)
   - /test (test.js using JEST)
+  - /routes (Routes)
   - server.js
   - Dockerfile
