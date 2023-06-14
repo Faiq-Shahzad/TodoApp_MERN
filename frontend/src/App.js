@@ -1,31 +1,38 @@
 import "./App.css";
-import { RxHamburgerMenu, RxChevronDown } from "react-icons/rx";
-import TodoList from "./components/TodoList";
 import { useEffect, useState } from "react";
+import TodoList from "./components/TodoList/TodoList";
+import TodoInput from "./components/TodoInput/TodoInput";
 import {
   addTask,
   getTodoList,
   updateTask,
   deleteTask,
 } from "./utils/HandleApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import BackgroundImage from "./components/BackgroundImage/BackgroundImage";
+import ProfilePicture from "./components/ProfilePicture/ProfilePicture";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
-  const [task, setTask] = useState();
 
   // Add a new Task
-  const handleAddTask = () => {
+  const handleAddTask = (task, setTask, e) => {
+    e.preventDefault();
     addTask(task, setTask, setTodoList);
+    toast("'" + task + "' Task Added Successfully");
   };
 
   // Update a task
   const handleUpdateTask = (taskID, completed) => {
     updateTask(taskID, completed, setTodoList);
+    toast("Task Completed");
   };
 
   // Delete a task
   const handleDeleteTask = (taskID) => {
     deleteTask(taskID, setTodoList);
+    toast("Task Deleted Successfully");
   };
 
   useEffect(() => {
@@ -36,31 +43,14 @@ function App() {
   return (
     <div className="App">
       {/* Background Image */}
-      <div className="background"></div>
+      <BackgroundImage />
+
       <div className="content">
         {/* Profile Image */}
-        <img className="profileImg" src={require("./assets/avatar.jpg")} />
+        <ProfilePicture />
 
         {/* Input Task Field */}
-        <div className="inputDiv">
-          <RxHamburgerMenu className="icon" size={30} />
-
-          {/* Form Used to Add a Task on Enter */}
-          <form className="inputForm" onSubmit={handleAddTask}>
-            <input
-              className="inputField"
-              placeholder="To do today"
-              value={task}
-              onChange={(e) => setTask(e.target.value)}
-            />
-            <RxChevronDown
-              className="icon"
-              size={18}
-              type="submit"
-              onClick={handleAddTask}
-            />
-          </form>
-        </div>
+        <TodoInput handleAddTask={handleAddTask} />
 
         {/* Display List */}
         {todoList.length > 0 ? (
@@ -77,6 +67,7 @@ function App() {
           <></>
         )}
       </div>
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 }
