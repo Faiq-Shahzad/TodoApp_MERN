@@ -34,7 +34,7 @@ docker-compose up -d
 To run the unit testing, in terminal, run commands:
 ```
 cd backend
-npx jest ./test/test.js
+npm test
 ```
 ## Project Structure
 The project structure is as follows:
