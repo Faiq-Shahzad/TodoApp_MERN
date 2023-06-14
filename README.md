@@ -36,7 +36,11 @@ The project structure is as follows:
 - /frontend
   - /src
     - /assets (containing background images, etc.)
-    - /components (TodoList Components)
+    - /components
+      - /BackgroundImage (background image component)
+      - /ProfilePicture (profile picture component)
+      - /TodoInput (input form to add task)
+      - /TodoList (contains todolist to display)
     - /utils (API Handler)
     - App.js
   - Dockerfile
