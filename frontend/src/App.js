@@ -19,8 +19,12 @@ function App() {
   // Add a new Task
   const handleAddTask = (task, setTask, e) => {
     e.preventDefault();
-    addTask(task, setTask, setTodoList);
-    toast("'" + task + "' Task Added Successfully");
+    if (task == ""){
+      toast("Please provide a valid task");  
+    }else{
+      addTask(task, setTask, setTodoList);
+      toast("'" + task + "' Task Added Successfully");  
+    }
   };
 
   // Update a task

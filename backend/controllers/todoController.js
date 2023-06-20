@@ -1,13 +1,10 @@
-const todoSchema = require("../models/todoModel");
+const { addService, getService, updateService, deleteService } = require("../services/todoServices");
 
 // POST TASK CONTROLLER
 const postTask = async (req, res) => {
   try {
-    const addTask = new todoSchema({
-      task: req.body.task,
-    });
-
-    const saveTask = await todoSchema.create(addTask);
+    const taskData = req.body.task
+    const saveTask = await addService(taskData);
     res.status(200).json(saveTask);
   } catch (err) {
     res.json(err);
@@ -17,8 +14,7 @@ const postTask = async (req, res) => {
 // GET ALL TASK CONTROLLER
 const getTasks = async (req, res) => {
   try {
-    const list = await todoSchema.find();
-    console.log("Getting List from DB ->", list.length);
+    const list  = await getService();
     res.json(list);
   } catch (err) {
     console.log(err);
@@ -29,11 +25,8 @@ const getTasks = async (req, res) => {
 // UPDATE TASK CONTROLLER
 const updateTask = async (req, res) => {
   try {
-    const updateTask = await todoSchema.findByIdAndUpdate(req.params.id, {
-      completed: true,
-      completedTime: Date.now(),
-    });
-    console.log(updateTask);
+    const id = req.params.id;
+    const updateTask = await updateService(id); 
     res.status(200).json("Task Updated Successfully -> " + { updateTask });
   } catch (err) {
     console.log(err);
@@ -45,7 +38,8 @@ const updateTask = async (req, res) => {
 // DELETE TASK CONTROLLER
 const deleteTask = async (req, res) => {
   try {
-    const deleteTask = await todoSchema.findByIdAndDelete(req.params.id);
+    const id = req.params.id;
+    const deleteTask = await deleteService(id);
     console.log(deleteTask);
     res.status(200).json("Task Deleted Successfully -> " + { deleteTask });
   } catch (err) {

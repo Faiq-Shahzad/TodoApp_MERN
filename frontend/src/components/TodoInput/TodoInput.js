@@ -17,15 +17,15 @@ const TodoInput = ({handleAddTask}) => {
           <form className="inputForm" onSubmit={(e)=> addTodoTask(e)}>
             <input
               className="inputField"
-              placeholder="To do today ..."
+              placeholder="Enter your TODO Description"
               value={task}
               onChange={(e) => setTask(e.target.value)}
             />
             <RxChevronDown
               className="icon"
               size={18}
-              type="submit"
-              onClick={(e)=>addTodoTask(e)}
+              // type="submit"
+              // onClick={(e)=>addTodoTask(e)}
             />
           </form>
         </div>
