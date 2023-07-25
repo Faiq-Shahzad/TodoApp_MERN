@@ -31,7 +31,7 @@ docker-compose up -d
 ```
 
 ## Unit Testing (JEST)
-To run the unit testing, in terminal, run commands:
+To run the unit testing writted using JEST, in terminal, run commands:
 ```
 cd backend
 npm test
